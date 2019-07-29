@@ -1,9 +1,8 @@
 const
   express = require('express'),
   morgan = require('morgan'),
-  app = express()
-
-const handleRouting = (req, res) => res.send({ response: 'routing' })
+  app = express(),
+  router = require('./routes')
 
 app
   /**
@@ -19,14 +18,10 @@ app
   /**
    * Routes
    */
-  .use('/', handleRouting)
+  .use('/', router)
   /**
    * public
    */
   .use(express.static(`${__dirname}/public`))
 
-  /**
-   * Server
-   */
-  .listen(app.get('port'), () => console.log(`api server running at port ${app.get('port')}`))
-// module.exports = app
+module.exports = app

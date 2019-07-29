@@ -116,8 +116,8 @@ ___
 
 # Todos
 
-- [ ] creating the api
-  - [ ] create the folder structure
+- [x] creating the api
+  - [x] create the folder structure
   - [ ] design the models and mongo database
   - [ ] build the models
   - [ ] build the controllers / handlers

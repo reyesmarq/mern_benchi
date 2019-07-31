@@ -105,14 +105,17 @@ api/
 
 ### API endpoint
 
-* **GET** /customers
+Global endpoint `/api`
 
-  fetch the list of the customers
 
-* **POST** /customers
-
-  Create a customers. Needs the following information on the body. 
 ___
+
+### Handlers
+
+| Resource          | GET<br><small>read</small> | POST<br><small>create</small> | PUT<br><small>update</small> | DELETE                      |
+| ----------------- | -------------------------- | ----------------------------- | ---------------------------- | --------------------------- |
+| `/customers`      | Return all customers       | Create a customer             | update bulk customers        | delete all of the customers |
+| `/customers/{id}` | Return a customer          |                               | update a customer            | delete a customer           |
 
 # Todos
 

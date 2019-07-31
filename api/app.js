@@ -18,7 +18,7 @@ app
   /**
    * Routes
    */
-  .use('/', router)
+  .use('/api', router)
   /**
    * public
    */

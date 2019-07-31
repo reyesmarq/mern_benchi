@@ -1,6 +1,5 @@
 const
-  mongoose = require('mongoose'),
-  { Schema } = mongoose,
+  { model, Schema } = require('mongoose'),
   customerSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -10,4 +9,4 @@ const
     creationDate: { type: Date, default: Date.now() }
   })
 
-module.exports = mongoose.model('Customer', customerSchema)
+module.exports = model('Customer', customerSchema)

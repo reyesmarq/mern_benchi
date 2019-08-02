@@ -4,7 +4,10 @@ const
   customerSchema = new Schema({
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
-    local_id: { type: String, required: true, unique: true },
+    document_information: {
+      type: { type: String, enum: ['personal_id', 'passport'], required: true },
+      number: { type: String, required: true }
+    },
     security_code: { type: String, required: true, select: false },
     // client: { type: String, required: true },
     creation_date: { type: Date, default: Date.now() },

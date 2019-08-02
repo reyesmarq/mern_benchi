@@ -74,7 +74,10 @@ GET -  http://domain.com/api/customers
       {
         "first_name": "marcela",
         "last_name": "vargas",
-        "local_id": "045151963-4",
+        "document": {
+          "type": "id",
+          "number": "045151963-4"
+        },
         "last_update": "date",
         "creation_date": "date",
         "id": 1
@@ -82,7 +85,10 @@ GET -  http://domain.com/api/customers
       {
         "first_name": "mau",
         "last_name": "reyes",
-        "local_id": "0541419630-4",
+        "document": {
+          "type": "id",
+          "number": "045151963-4"
+        },
         "last_update": "date",
         "creation_date": "date",
         "id": 2
@@ -104,7 +110,10 @@ GET -  http://domain.com/api/customers/${id}
   "data": {
     "first_name": "marcela",
     "last_name": "vargas",
-    "local_id": "045151963-4",
+    "document": {
+      "type": "id",
+      "number": "045151963-4"
+    },
     "last_update": "date",
     "creation_date": "date",
     "id": 1
@@ -128,7 +137,10 @@ POST -  http://domain.com/api/customers
 {
   "first_name": "marce",
   "last_name": "vargas",
-  "local_id": "04515185-16",
+  "document": {
+      "type": "id",
+      "number": "045151963-4"
+    },
   "security_code": "0505"
 }
 ```
@@ -142,7 +154,10 @@ POST -  http://domain.com/api/customers
     "customer": {
       "first_name": "marce",
       "last_name": "vargas",
-      "local_id": "045151963-4",
+      "document": {
+        "type": "id",
+        "number": "045151963-4"
+      },
       "last_update": "date",
       "creation_date": "date",
       "id": 123
@@ -171,7 +186,10 @@ PUT -  http://domain.com/api/customers/${id}
 {
   "first_name": "marce",
   "last_name": "vargas",
-  "local_id": "04515185-16",
+  "document": {
+      "type": "id",
+      "number": "045151963-4"
+    },
   "security_code": "0505"
 }
 ```
@@ -185,7 +203,10 @@ PUT -  http://domain.com/api/customers/${id}
     "customer": {
       "first_name": "marce",
       "last_name": "vargas",
-      "local_id": "0451518520-6",
+      "document": {
+          "type": "id",
+          "number": "045151963-4"
+        },
       "last_update": "date",
       "creation_date": "date",
       "id": 123

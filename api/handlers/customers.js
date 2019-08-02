@@ -1,30 +1,31 @@
 const Customer = require('../models/customer')
 
 const postCustomers = async (req, res) => {
-  const { firstName, lastName, localId, securityCode } = req.body
+  const { first_name, last_name, local_id, security_code } = req.body
+  /**
+   * convention
+   * res.status(code).json({})
+   */
+
   /**
    * Validating existing customer with local id
    */
-  const existingCustomer = await Customer.findOne({ localId })
+  const existingCustomer = await Customer.findOne({ local_id })
 
   if (existingCustomer) {
     return res.send({ code: 409, response: 'There is a customer with this ID' })
   }
 
-  if (securityCode.length != 4) {
-    return res.send({ code: 500, response: 'Security Code must be 4 digit long' })
-  } 
-
   /**
    * Creating a new customer
    */
-  const newCustomer = new Customer({ firstName, lastName, localId, securityCode })
+  const newCustomer = new Customer(req.body)
 
   /**
    * Saving the user
    */
-  await newCustomer.save()
-  res.send({ code: 200, response: 'Customer Created' })
+  const { creation_date, last_update } = await newCustomer.save()
+  res.status(200).json({ message: 'Customer created successfully', data: { first_name, last_name, local_id, creation_date, last_update } })
 }
 
 module.exports = {

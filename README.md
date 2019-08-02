@@ -123,6 +123,8 @@ ___
   - [x] create the folder structure
   - [ ] design the models and mongo database
   - [ ] build the models
+    - [ ] customer
+      - [ ] replace local_id for document: { type: enum | personal_id | passport, number: 'number' }
   - [ ] build the controllers / handlers
   - [ ] build the application api with express
   - [ ] enable cors to handle form information

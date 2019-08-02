@@ -131,3 +131,93 @@ ___
 - [ ] own styling or css framework
 - [ ] initiate the react application
   - [ ] useContext or redux
+
+# POSIBLE RESPONSES
+
+**Sign up**
+
+```json
+{
+    "message": "token_generated",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwODksImlzcyI6Imh0dHBzOlwvXC9yZWFjdC1ibG9nLWFwaS5iYWhkY2FzdHMuY29tXC9hcGlcL2F1dGhcL3JlZ2lzdGVyIiwiaWF0IjoxNTY0NzUzNTI4LCJleHAiOjI3NzQzNTM1MjgsIm5iZiI6MTU2NDc1MzUyOCwianRpIjoibWhSQ2RSdXBDS29aVWhDQSJ9.kENw9mOYhrpsq5rAYq40BDOs0MP70PADWES-zFwQZDs",
+        "user": {
+            "name": "Mauricio",
+            "email": "posting@posting.com",
+            "updated_at": "2019-08-02 13:45:28",
+            "created_at": "2019-08-02 13:45:28",
+            "id": 2089
+        }
+    }
+}
+```
+
+**Sign up**
+
+```json
+{
+    "message": "token_generated",
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwODksImlzcyI6Imh0dHBzOlwvXC9yZWFjdC1ibG9nLWFwaS5iYWhkY2FzdHMuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNTY0NzUzNzA3LCJleHAiOjI3NzQzNTM3MDcsIm5iZiI6MTU2NDc1MzcwNywianRpIjoiWjE1VGFJMVgzOHBENzJsaiJ9.EW3t1dU-XvNiUc1Wc96FQEeNldlt8R9HmaWBiSBblyA",
+        "user": {
+            "id": 2089,
+            "name": "Mauricio",
+            "email": "posting@posting.com",
+            "created_at": "2019-08-02 13:45:28",
+            "updated_at": "2019-08-02 13:45:28"
+        }
+    }
+}
+```
+
+**Fetch articles**
+
+```json
+{
+    "status": "success",
+    "data": {
+        "total": 186,
+        "per_page": 5,
+        "current_page": 1,
+        "last_page": 38,
+        "next_page_url": "https:\/\/react-blog-api.bahdcasts.com\/api\/articles?page=2",
+        "prev_page_url": null,
+        "from": 1,
+        "to": 5,
+        "data": [
+          {
+                "id": 241,
+                "title": "Sun, sun, go away, make me burn some other day",
+                "slug": "sun-sun-go-away-make-me-burn-some-other-day-1564691031",
+                "user_id": 1886,
+                "category_id": 5,
+                "imageUrl": "https:\/\/res.cloudinary.com\/tsullivan\/image\/upload\/v1564691030\/lxg0btqtmf3lxoze4eyt.jpg",
+                "content": "content of the article",
+                "created_at": "2019-08-01 20:23:51",
+                "updated_at": "2019-08-01 20:23:51",
+                "user": {
+                    "id": 1886,
+                    "name": "tessa",
+                    "email": "tessa.sullivan@gmail.com",
+                    "created_at": "2019-07-25 15:06:32",
+                    "updated_at": "2019-07-25 15:06:32"
+                },
+                "category": {
+                    "id": 5,
+                    "name": "Fugiat vero.",
+                    "slug": "fugiat-vero",
+                    "created_at": "2019-04-02 05:06:57",
+                    "updated_at": "2019-04-02 05:06:57"
+                }
+            }
+        ]
+    },
+    "message": "Articles fetched successfully."
+}
+```
+
+**Delete articles**
+
+```http
+DELETE /articles/${id}
+```

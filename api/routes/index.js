@@ -1,15 +1,10 @@
 const
-  express = require('express'),
-  router = express.Router(),
-  customerHandlers = require('../handlers/customers'),
-  { reading, validate } = require('../utils/validator')
+  routes = require('express')(),
+  customers = require('./customers'),
+  root = require('./root')
 
-const handleRouting = (req, res) => res.send({ response: 'routing from routing' })
+routes
+  .use('/', root)
+  .use('/customers', customers)
 
-router.route('/')
-  .get(handleRouting)
-
-router.route('/customers')
-  .post(reading('create_customer'), validate, customerHandlers.postCustomers)
-
-module.exports = router
+module.exports = routes

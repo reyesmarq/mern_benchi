@@ -71,15 +71,15 @@ api/
 
 #### Customer
 
-| Field         | Type     | Description              |
-| ------------- | -------- | ------------------------ |
-| id            | objectId | customer id              |
-| firstName     | string   | customer firstname       |
-| lastname      | string   | customer lastname        |
-| localid       | string   | customer local id unique |
-| security code | number   | 4 digit number           |
-| client        | string   | client's id              |
-| CreationDate  | Date     | customer's creation date |
+| Field                | Type     | Description              |
+| -------------------- | -------- | ------------------------ |
+| id                   | objectId | customer id              |
+| first_name           | string   | customer firstname       |
+| last_name            | string   | customer lastname        |
+| document_information | object   | {type, number}           |
+| security_code        | number   | 4 digit number           |
+| client               | string   | client's id              |
+| creation_date        | Date     | customer's creation date |
 
 
 #### Bank Account

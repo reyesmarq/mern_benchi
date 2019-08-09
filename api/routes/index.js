@@ -4,7 +4,7 @@ const
   root = require('./root')
 
 routes
-  .use('/', root)
-  .use('/customers', customers)
+.use('/customers', customers)
+.use('/', root)
 
 module.exports = routes

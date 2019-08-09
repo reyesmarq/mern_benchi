@@ -1,6 +1,7 @@
 const
   Customer = require('../models/customer'),
-  resCodes = require('../config/resCodes')
+  resCodes = require('../config/resCodes'),
+  { response } = require('../utils/response')
 
 const postCustomers = async (req, res) => {
   console.log(req.body)

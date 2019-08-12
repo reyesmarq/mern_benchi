@@ -8,4 +8,7 @@ router.route('/')
   .get(getCustomers)
   .post(reading('create_customer'), validate, postCustomers)
 
+router.route('/:id')
+  .get()
+
 module.exports = router

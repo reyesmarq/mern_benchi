@@ -10,11 +10,6 @@ const postCustomers = async (req, res) => {
    */
   const existingCustomer = await Customer.findOne({ "document_information.number": number })
   if (existingCustomer) {
-    // return res.send({
-    //   code: resCodes.CONFLICT.code,
-    //   description: resCodes.CONFLICT.description,
-    //   response: 'There is a customer with this ID'
-    // })
     return response(req, res, CONFLICT, null, 'There is a customer with this ID')
   }
 
@@ -39,7 +34,6 @@ const getCustomers = async (req, res) => {
 
 const getCustomer = async (req, res) => {
   const { id } = req.params
-
 }
 
 module.exports = {

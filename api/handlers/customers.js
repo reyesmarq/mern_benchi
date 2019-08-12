@@ -1,21 +1,21 @@
 const
   Customer = require('../models/customer'),
-  resCodes = require('../config/resCodes'),
+  { CONFLICT } = require('../config/resCodes'),
   { response } = require('../utils/response')
 
 const postCustomers = async (req, res) => {
-  console.log(req.body)
   const { first_name, last_name, local_id, document_information, document_information: { number } } = req.body
   /**
    * Validating existing customer with local id
    */
   const existingCustomer = await Customer.findOne({ "document_information.number": number })
   if (existingCustomer) {
-    return res.send({
-      code: resCodes.CONFLICT.code,
-      description: resCodes.CONFLICT.description,
-      response: 'There is a customer with this ID'
-    })
+    // return res.send({
+    //   code: resCodes.CONFLICT.code,
+    //   description: resCodes.CONFLICT.description,
+    //   response: 'There is a customer with this ID'
+    // })
+    return response(req, res, CONFLICT, null, 'There is a customer with this ID')
   }
 
   /**
@@ -35,6 +35,11 @@ const getCustomers = async (req, res) => {
   const customers = await Customer.find()
 
   return response(req, res, resCodes.OK, customers)
+}
+
+const getCustomer = async (req, res) => {
+  const { id } = req.params
+
 }
 
 module.exports = {

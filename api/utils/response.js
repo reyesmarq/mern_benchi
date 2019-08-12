@@ -1,6 +1,6 @@
 const response = (req, res, status, data, err = []) => {
-  if (data == null) data = []
-  
+  if (data === null) data = []
+
   res.status(status.code).json({
     status: {
       code: status.code,

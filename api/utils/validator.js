@@ -3,6 +3,14 @@ const
   { BAD_REQUEST } = require('../config/resCodes'),
   { response } = require('../utils/response')
 
+const formattedErrors = ({location, msg, param}) => {
+  return {
+    message: msg,
+    location,
+    param
+  }
+}
+  
 const reading = method => {
   switch (method) {
     case 'create_customer':
@@ -18,7 +26,7 @@ const reading = method => {
 }
 
 const validate = (req, res, next) => {
-  const errors = validationResult(req)
+  const errors = validationResult(req).formatWith(formattedErrors)
 
   if (!errors.isEmpty()) {
     // return res.status(422).json({ errors: errors.array() })

@@ -1,4 +1,7 @@
-const { check, validationResult } = require('express-validator')
+const
+  { check, validationResult } = require('express-validator'),
+  { BAD_REQUEST } = require('../config/resCodes'),
+  { response } = require('../utils/response')
 
 const reading = method => {
   switch (method) {
@@ -18,7 +21,8 @@ const validate = (req, res, next) => {
   const errors = validationResult(req)
 
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() })
+    // return res.status(422).json({ errors: errors.array() })
+    return response(req, res, BAD_REQUEST, null, errors.array())
   }
 
   next()

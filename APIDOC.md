@@ -23,6 +23,21 @@ description of the introduction
 * 409 `conflict` - Resolve the conflict and resubmit the request
 * 500 `Internal server error` - server error
 
+## Api standar response
+
+```json
+{
+  "status": {
+    "code": 200,
+    "msg": "ok"
+  },
+  "data": [
+    {}
+  ],
+  "err": []
+}
+```
+
 ## Somes examples
 
 ### Table sample

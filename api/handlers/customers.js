@@ -34,12 +34,7 @@ const postCustomers = async (req, res) => {
 const getCustomers = async (req, res) => {
   const customers = await Customer.find()
 
-  res.status(200).json({
-    code: resCodes.OK.code,
-    description: resCodes.OK.description,
-    message: 'Successfully',
-    data: customers
-  })
+  return response(req, res, resCodes.OK, customers)
 }
 
 module.exports = {

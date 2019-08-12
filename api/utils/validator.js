@@ -26,7 +26,7 @@ const reading = method => {
 }
 
 const validate = (req, res, next) => {
-  console.log(req.body)
+  
   const formattedErrors = ({ location, msg, param }) => {
     return {
       message: msg,

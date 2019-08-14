@@ -3,7 +3,7 @@ const
   { BAD_REQUEST } = require('../config/resCodes'),
   { response } = require('../utils/response')
 
-const reading = method => {
+const readingData = method => {
   switch (method) {
     case 'create_customer':
       return [
@@ -25,7 +25,7 @@ const reading = method => {
   }
 }
 
-const validate = (req, res, next) => {
+const validatingData = (req, res, next) => {
   
   const formattedErrors = ({ location, msg, param }) => {
     return {
@@ -44,4 +44,4 @@ const validate = (req, res, next) => {
   next()
 }
 
-module.exports = { reading, validate }
+module.exports = { readingData, validatingData }

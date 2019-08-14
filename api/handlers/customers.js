@@ -1,29 +1,37 @@
 const
   Customer = require('../models/customer'),
-  { CONFLICT } = require('../config/resCodes'),
-  { response } = require('../utils/response')
+  BankAccount = require('../models/bankAccount'),
+  { OK, CONFLICT } = require('../config/resCodes'),
+  { response } = require('../utils/response'),
+  resCodes = require('../config/resCodes')
 
 const postCustomers = async (req, res) => {
-  const { first_name, last_name, local_id, document_information, document_information: { number } } = req.body
+  const { first_name, last_name, document_information } = req.body
   /**
    * Validating existing customer with local id
    */
-  const existingCustomer = await Customer.findOne({ "document_information.number": number })
+  const existingCustomer = await Customer.findOne({ "document_information.number": document_information.number })
   if (existingCustomer) {
     return response(req, res, CONFLICT, null, 'There is a customer with this ID')
   }
 
-  /**
-   * Creating a new customer
-   */
   const newCustomer = new Customer(req.body)
+  const newBankAccount = new BankAccount({ number: `${Math.round(Math.random() * 100000)}`, customer: newCustomer._id })
+
   const { creation_date, last_update } = await newCustomer.save()
-  res.status(201).json({
-    code: resCodes.CREATED.code,
-    description: resCodes.CREATED.description,
-    message: 'Customer created successfully',
-    data: { first_name, last_name, local_id, document_information, creation_date, last_update }
-  })
+  const { balance, number, } = await newBankAccount.save()
+  const data = {
+    first_name,
+    last_name,
+    document_information,
+    bank_account: {
+      balance, number
+    },
+    creation_date,
+    last_update
+  }
+
+  response(req, res, OK, data)
 }
 
 const getCustomers = async (req, res) => {
@@ -34,9 +42,25 @@ const getCustomers = async (req, res) => {
 
 const getCustomer = async (req, res) => {
   const { id } = req.params
+  const { first_name, last_name, document_information, creation_date, last_update } = await Customer.findById(id)
+  const { balance, number } = await BankAccount.findOne({ customer: id })
+  
+  const data = {
+    first_name,
+    last_name,
+    document_information,
+    bank_account: {
+      balance, number
+    },
+    creation_date,
+    last_update
+  }
+
+  return response(req, res, OK, data)
 }
 
 module.exports = {
   postCustomers,
-  getCustomers
+  getCustomers,
+  getCustomer
 }

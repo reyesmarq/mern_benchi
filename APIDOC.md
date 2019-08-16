@@ -241,3 +241,5 @@ PUT -  http://domain.com/api/customers/${id}
   "message": "customer updated successfully"
 }
 ```
+
+## User collection

@@ -1,7 +1,7 @@
 const
   Customer = require('../models/customer'),
   BankAccount = require('../models/bankAccount'),
-  { OK, CONFLICT } = require('../config/resCodes'),
+  { OK, CONFLICT, CREATED } = require('../config/resCodes'),
   { response } = require('../utils/response'),
   resCodes = require('../config/resCodes')
 
@@ -31,7 +31,7 @@ const postCustomers = async (req, res) => {
     last_update
   }
 
-  response(req, res, OK, data)
+  response(req, res, CREATED, data)
 }
 
 const getCustomers = async (req, res) => {

@@ -59,8 +59,17 @@ const getCustomer = async (req, res) => {
   return response(req, res, OK, data)
 }
 
+const putCustomer = async (req, res) => {
+  const { id } = req.params
+  const { first_name, last_name, document_information } = req.body
+  const customer = await Customer.findByIdAndUpdate(id, { first_name, last_name, document_information })
+
+  res.json(customer)
+}
+
 module.exports = {
   postCustomers,
   getCustomers,
-  getCustomer
+  getCustomer,
+  putCustomer
 }

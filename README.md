@@ -120,17 +120,39 @@ ___
 # Todos
 
 - [x] creating the api
+  - [ ] Authentication using passport JWT
+    - [ ] Sign in 
+    - [ ] Sign up - onboarding through Super Administrator.
   - [x] create the folder structure
-  - [ ] design the models and mongo database
-  - [ ] build the models
-    - [ ] customer
-      - [ ] replace local_id for document: { type: enum | personal_id | passport, number: 'number' }
-  - [ ] build the controllers / handlers
-  - [ ] build the application api with express
+  - [x] design the models and mongo database
+  - [x] build the models
+    - [x] customer
+      - [x] replace local_id for document: { type: enum | personal_id | passport, number: 'number' }
+    - [x] bank account
+    - [x] transactions
+  - [x] build the controllers / handlers
+    - [ ] Customer
+      - [x] getCustomers
+      - [x] postCustomers to create a customer
+      - [x] putCustomer/id to update a customer
+      - [x] deleteCustomer/id to delete a customer
+    - [ ] Transactions
+      - [ ] getTransactions
+      - [ ] getTransaction
+      - [ ] postTransaction
+      - [ ] deleteTransaction
+    - [ ] Bank Account, it is posible that one customer have more than one bank account
+      - [ ] getBakAccounts
+      - [ ] getBankAccount/id
+      - [ ] postBankAccount
+      - [ ] deleteBankAccount/id
+      - [ ] putBankAccount/id
+  - [x] build the application api with express
   - [ ] enable cors to handle form information
   - [ ] creating api documentation with swagger (possible)
 - [ ] creating the UI
-- [ ] own styling or css framework
+- [x] own styling or css framework
+  - [ ] going to use css framework [Bulma css](https://bulma.io/)
 - [ ] initiate the react application
   - [ ] useContext or redux
 

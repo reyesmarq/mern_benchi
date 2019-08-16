@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose'),
   transactionSchema = new Schema({
-    bankAccount: { type: String, required: true },
+    bankAccount: { type: String, required: true, index: true },
     type: { type: String, enum: ['withdrawal', 'deposit'], required: true },
     amount: { type: Number, required: true },
     date: { type: Date, default: Date.now() }

@@ -121,8 +121,9 @@ ___
 
 - [x] creating the api
   - [ ] Authentication using passport JWT
-    - [ ] Sign in 
+    - [ ] Sign in
     - [ ] Sign up - onboarding through Super Administrator.
+      - [ ] I have created the /users/signup endpoint, but would not be possible for users but for clients. Clients would be capable of adding more users. Because he is the super administrator
   - [x] create the folder structure
   - [x] design the models and mongo database
   - [x] build the models

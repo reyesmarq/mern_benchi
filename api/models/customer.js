@@ -16,12 +16,12 @@ const
 
 customerSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt(10)
-  const passwordHash = await bcrypt.hash(this.security_code, salt)
-  this.securityCode = passwordHash
+  const securityCode = await bcrypt.hash(this.security_code, salt)
+  this.securityCode = securityCode
   next()
 })
 
-customerSchema.methods.matchPassword = async function (securityCode) {
+customerSchema.methods.matchSecurityCode = async function (securityCode) {
   return await bcrypt.compare(securityCode, this.security_code)
 }
 

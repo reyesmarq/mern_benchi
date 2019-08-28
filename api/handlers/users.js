@@ -29,9 +29,10 @@ const postSignUp = async (req, res) => {
 }
 
 const postSignIn = async (req, res) => {
-  
+  res.json({ msg: 'signin completed here is the token...just kidding' })
 }
 
 module.exports = {
-  postSignUp
+  postSignUp,
+  postSignIn
 }

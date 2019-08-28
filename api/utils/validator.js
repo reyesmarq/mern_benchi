@@ -2,7 +2,7 @@ const
   { check, validationResult } = require('express-validator'),
   { BAD_REQUEST } = require('../utils/resCodes'),
   { response } = require('../utils/response'),
-  { CREATE_CUSTOMER } = require('../utils/conts')
+  { CREATE_CUSTOMER } = require('./const')
 
 const readingData = method => {
   switch (method) {

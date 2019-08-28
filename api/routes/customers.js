@@ -3,7 +3,7 @@ const
   router = express.Router(),
   { readingData, validatingData } = require('../utils/validator'),
   { getCustomers, getCustomer, postCustomers, putCustomer } = require('../handlers/customers'),
-  { CREATE_CUSTOMER } = require('../utils/conts')
+  { CREATE_CUSTOMER } = require('../utils/const')
 
 router.route('/')
   .get(getCustomers)

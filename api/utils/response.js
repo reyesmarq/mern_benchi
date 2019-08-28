@@ -1,4 +1,5 @@
 const response = (req, res, status, data, errors = []) => {
+  let err = []
   if (data === null) data = []
   if (typeof errors === 'string') err.push({ message: errors })
 
@@ -9,7 +10,7 @@ const response = (req, res, status, data, errors = []) => {
       description: status.description
     },
     data,
-    errors
+    errors: err.length === 0 ? errors : err
   })
 }
 

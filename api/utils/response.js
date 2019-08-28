@@ -1,4 +1,4 @@
-const response = (req, res, status, data, err = []) => {
+const response = (req, res, status, data, errors = []) => {
   if (data === null) data = []
 
   res.status(status.code).json({
@@ -7,7 +7,7 @@ const response = (req, res, status, data, err = []) => {
       message: status.message
     },
     data,
-    err
+    errors
   })
 }
 

@@ -120,6 +120,7 @@ ___
 # Todos
 
 - [x] creating the api
+  - [ ] SET an autoincrement that woudl serve as external ID. for easy urls, instead of the mongodbid
   - [ ] Authentication using passport JWT
     - [ ] Sign in
     - [ ] Sign up - onboarding through Super Administrator.

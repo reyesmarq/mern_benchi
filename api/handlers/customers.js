@@ -1,16 +1,14 @@
 const
   Customer = require('../models/customer'),
   BankAccount = require('../models/bankAccount'),
-  { OK, CONFLICT, CREATED } = require('../config/resCodes'),
+  { OK, CONFLICT, CREATED } = require('../utils/resCodes'),
   { response } = require('../utils/response'),
-  resCodes = require('../config/resCodes')
+  resCodes = require('../utils/resCodes')
 
 const postCustomers = async (req, res) => {
-  const { first_name, last_name, document_information } = req.body
-  /**
-   * Validating existing customer with local id
-   */
-  const existingCustomer = await Customer.findOne({ "document_information.number": document_information.number })
+  const { firstName, lastName, documentInformation } = req.body
+  /**Validating existing customer with local id */
+  const existingCustomer = await Customer.findOne({ "documentInformation.number": documentInformation.number })
   if (existingCustomer) {
     return response(req, res, CONFLICT, null, 'There is a customer with this ID')
   }
@@ -18,17 +16,17 @@ const postCustomers = async (req, res) => {
   const newCustomer = new Customer(req.body)
   const newBankAccount = new BankAccount({ number: `${Math.round(Math.random() * 100000)}`, customer: newCustomer._id })
 
-  const { creation_date, last_update } = await newCustomer.save()
+  const { created, updated } = await newCustomer.save()
   const { balance, number, } = await newBankAccount.save()
   const data = {
-    first_name,
-    last_name,
-    document_information,
-    bank_account: {
+    firstName,
+    lastName,
+    documentInformation,
+    bankAccount: {
       balance, number
     },
-    creation_date,
-    last_update
+    created,
+    updated
   }
 
   response(req, res, CREATED, data)
@@ -42,18 +40,18 @@ const getCustomers = async (req, res) => {
 
 const getCustomer = async (req, res) => {
   const { id } = req.params
-  const { first_name, last_name, document_information, creation_date, last_update } = await Customer.findById(id)
+  const { firstName, lastName, documentInformation, created, updated } = await Customer.findById(id)
   const { balance, number } = await BankAccount.findOne({ customer: id })
   
   const data = {
-    first_name,
-    last_name,
-    document_information,
-    bank_account: {
+    firstName,
+    lastName,
+    documentInformation,
+    bankAccount: {
       balance, number
     },
-    creation_date,
-    last_update
+    created,
+    updated
   }
 
   return response(req, res, OK, data)
@@ -61,8 +59,8 @@ const getCustomer = async (req, res) => {
 
 const putCustomer = async (req, res) => {
   const { id } = req.params
-  const { first_name, last_name, document_information } = req.body
-  const customer = await Customer.findByIdAndUpdate(id, { first_name, last_name, document_information })
+  const { firstName, lastName, documentInformation } = req.body
+  const customer = await Customer.findByIdAndUpdate(id, { firstName, lastName, documentInformation })
 
   res.json(customer)
 }

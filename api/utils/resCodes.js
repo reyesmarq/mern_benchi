@@ -1,46 +1,57 @@
 module.exports = {
   OK: {
     code: 200,
-    message: 'ok.'
+    status: 'OK',
+    description: 'Ok.'
   },
   CREATED: {
     code: 201,
-    message: 'The request was successfully and a resource was created.'
+    status: 'CREATED',
+    description: 'The request was successfully and a resource was created.'
   },
   NO_CONTENT: {
     code: 204,
-    message: 'The request was successfully but there is no representation to return.'
+    status: 'NO_CONTENT',
+    description: 'The request was successfully but there is no representation to return.'
   },
   NOT_MODIFIED: {
     code: 304,
-    message: 'Redirection not modified.'
+    status: 'NOT_MODIFIED',
+    description: 'Redirection not modified.'
   },
   BAD_REQUEST: {
     code: 400,
-    message: 'The request could not be understood, or was missing required parameters.'
+    status: 'BAD_REQUEST',
+    description: 'The request could not be understood, or was missing required parameters.'
   },
   UNAUTHORIZED: {
     code: 401,
-    message: `Authentication failed or user does't have permissions for requested operation.`
+    status: 'UNAUTHORIZED',
+    description: `Authentication failed or user does't have permissions for requested operation.`
   },
   FORBIDDEN: {
     code: 403,
-    message: 'Access denied.'
+    status: 'FORBIDDEN',
+    description: 'Access denied.'
   },
   NOT_FOUND: {
     code: 404,
-    message: 'Resource was not found.'
+    status: 'NOT_FOUND',
+    description: 'Resource was not found.'
   },
   METHOD_NOT_ALLOWED: {
     code: 405,
-    message: 'The requested method is not supported for this resource.'
+    status: 'METHOD_NOT_ALLOWED',
+    description: 'The requested method is not supported for this resource.'
   },
   CONFLICT: {
     code: 409,
-    message: 'Resolve the conflict and resubmit the request'
+    status: 'CONFLICT',
+    description: 'Resolve the conflict and resubmit the request'
   },
   INTERNAL_SERVER_ERROR: {
     code: 500,
-    message: 'Internal server error.'
+    status: 'INTERNAL_SERVER_ERROR',
+    description: 'Internal server error.'
   }
 }

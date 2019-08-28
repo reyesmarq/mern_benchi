@@ -1,14 +1,6 @@
-const response = (req, res, status, data, errors) => {
-  let err = []
+const response = (req, res, status, data, errors = []) => {
   if (data === null) data = []
   if (typeof errors === 'string') err.push({ message: errors })
-  if (typeof test === 'undefined') errors = err
-
-  let response = {
-    code: status.code,
-    status: status.status,
-    description: status.description
-  }
 
   res.status(status.code).json({
     response: {
@@ -17,7 +9,7 @@ const response = (req, res, status, data, errors) => {
       description: status.description
     },
     data,
-    errors: err
+    errors
   })
 }
 

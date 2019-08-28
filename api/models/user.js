@@ -6,7 +6,9 @@ const
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    // client: { type: String, required: true, index: true }
+    // client: { type: String, required: true, index: true },
+    created: { type: Date, default: Date.now() },
+    updated: { type: Date, default: Date.now() }
   })
 
 userSchema.pre('save', async function (next) {

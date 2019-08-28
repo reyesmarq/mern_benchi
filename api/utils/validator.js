@@ -1,6 +1,6 @@
 const
   { check, validationResult } = require('express-validator'),
-  { BAD_REQUEST } = require('../config/resCodes'),
+  { BAD_REQUEST } = require('../utils/resCodes'),
   { response } = require('../utils/response'),
   { CREATE_CUSTOMER } = require('../utils/conts')
 

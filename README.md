@@ -131,6 +131,7 @@ ___
     - [x] customer
       - [x] replace local_id for document: { type: enum | personal_id | passport, number: 'number' }
     - [x] bank account
+      - [ ] Need a library to generate bank account numbers for me
     - [x] transactions
   - [x] build the controllers / handlers
     - [ ] Customer

@@ -1,6 +1,6 @@
 const
   User = require('../models/user'),
-  { CREATED, CONFLICT } = require('../config/resCodes'),
+  { CREATED, CONFLICT } = require('../utils/resCodes'),
   { response } = require('../utils/response')
 
 /**
@@ -8,7 +8,7 @@ const
  * The super administrator on client would be capable of create new users, so then can sign in
  */
 const postSignUp = async (req, res) => {
-  let { first_name, last_name, email, password } = req.body
+  let { firstName, lastName, email, password } = req.body
 
   /**Validating if Existing user exist */
   let existingUser = await User.findOne({ email })
@@ -17,13 +17,13 @@ const postSignUp = async (req, res) => {
   }
 
   let newUser = new User(req.body)
-  let { creation_date, last_update } = newUser.save()
+  let { created, updated } = newUser.save()
   let data = {
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     email,
-    creation_date,
-    last_update
+    created,
+    updated
   }
   return response(req, res, CREATED, data)
 }

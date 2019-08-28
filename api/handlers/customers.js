@@ -2,8 +2,7 @@ const
   Customer = require('../models/customer'),
   BankAccount = require('../models/bankAccount'),
   { OK, CONFLICT, CREATED } = require('../utils/resCodes'),
-  { response } = require('../utils/response'),
-  resCodes = require('../utils/resCodes')
+  { response } = require('../utils/response')
 
 const postCustomers = async (req, res) => {
   const { firstName, lastName, documentInformation } = req.body
@@ -35,7 +34,7 @@ const postCustomers = async (req, res) => {
 const getCustomers = async (req, res) => {
   const customers = await Customer.find()
 
-  return response(req, res, resCodes.OK, customers)
+  return response(req, res, OK, customers)
 }
 
 const getCustomer = async (req, res) => {
@@ -62,7 +61,7 @@ const putCustomer = async (req, res) => {
   const { firstName, lastName, documentInformation } = req.body
   const customer = await Customer.findByIdAndUpdate(id, { firstName, lastName, documentInformation })
 
-  res.json(customer)
+  response(req, res, OK, customer)
 }
 
 module.exports = {

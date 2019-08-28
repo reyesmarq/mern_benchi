@@ -2,11 +2,11 @@ const
   { check, validationResult } = require('express-validator'),
   { BAD_REQUEST } = require('../utils/resCodes'),
   { response } = require('../utils/response'),
-  { CREATE_CUSTOMER, USER_SIGNUP } = require('./const')
+  { CUSTOMER_CREATE, USER_SIGNUP } = require('./const')
 
 const readingData = method => {
   switch (method) {
-    case CREATE_CUSTOMER:
+    case CUSTOMER_CREATE:
       return [
         check('firstName')
           .not().isEmpty().withMessage('First name cannot be empty'),

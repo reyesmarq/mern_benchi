@@ -3,11 +3,11 @@ const
   router = express.Router(),
   { readingData, validatingData } = require('../utils/validator'),
   { getCustomers, getCustomer, postCustomers, putCustomer } = require('../handlers/customers'),
-  { CREATE_CUSTOMER } = require('../utils/const')
+  { CUSTOMER_CREATE } = require('../utils/const')
 
 router.route('/')
   .get(getCustomers)
-  .post(readingData(CREATE_CUSTOMER), validatingData, postCustomers)
+  .post(readingData(CUSTOMER_CREATE), validatingData, postCustomers)
 
 router.route('/:id')
   .get(getCustomer)

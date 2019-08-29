@@ -1,6 +1,6 @@
 const
   jwt = require('jsonwebtoken'),
-  { jwt_secret } = require('../config/keys'),
+  { jwt: { secret, iss }  } = require('../config/keys'),
   tokenExpirationDate = Math.floor(Date.now() / 1000) + (60 * 60) // Need to change, and implement momentjs
 
 /**
@@ -9,7 +9,7 @@ const
  */
 const generateToken = (user) => {
   let token = jwt.sign(
-    { exp: tokenExpirationDate, iss: 'Mern Benchi', sub: user.id },
+    { iss, sub: user.id, exp: tokenExpirationDate },
     /**
      * Posible jwt attributes
      * iss: issuer
@@ -18,9 +18,9 @@ const generateToken = (user) => {
      * exp: jwt expiration
      * nbf: incidates the moment when is going to start acepting the jwt
      * iat: when it was issued
-     * jti: unique jwt id
+     * jti: unique jwt id uuid
      */
-    jwt_secret
+    secret
   )
   
   return token

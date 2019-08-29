@@ -1,7 +1,7 @@
 const
   mongoose = require('mongoose'),
-  keys = require('../config/keys'),
-  URI = `mongodb+srv://${keys.db.user}:${keys.db.password}@mau-089mv.mongodb.net/${keys.db.db_name}?retryWrites=true&w=majority`
+  { db: { user, password, dbName } } = require('../config/keys'),
+  URI = `mongodb+srv://${user}:${password}@mau-089mv.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
 class Database {
 

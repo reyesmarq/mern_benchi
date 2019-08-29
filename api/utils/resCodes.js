@@ -27,12 +27,7 @@ module.exports = {
   UNAUTHORIZED: {
     code: 401,
     status: 'UNAUTHORIZED',
-    description: `Authentication failed or user does't have permissions for requested operation.`
-  },
-  EXPIRED_TOKEN: {
-    code: 401,
-    status: 'UNAUTHORIZED',
-    description: `The token is expired.`
+    description: `Authentication failed, user does't have permissions for requested operation, or there is a token error`
   },
   FORBIDDEN: {
     code: 403,

@@ -1,7 +1,7 @@
 const
   jwt = require('jsonwebtoken'),
-  { jwt: { secret, iss }  } = require('../config/keys'),
-  tokenExpirationDate = Math.floor(Date.now() / 1000) + (60 * 60) // Need to change, and implement momentjs
+  { jwt: { secret, iss, exp }  } = require('../config/keys')
+  // tokenExpirationDate = Math.floor(Date.now() / 1000) + (60 * 60) // Need to change, and implement momentjs
 
 /**
  * TODO- This function is currently taking the email, but could be taking more information
@@ -9,7 +9,6 @@ const
  */
 const generateToken = (user) => {
   let token = jwt.sign(
-    { iss, sub: user.id, exp: tokenExpirationDate },
     /**
      * Posible jwt attributes
      * iss: issuer
@@ -20,6 +19,11 @@ const generateToken = (user) => {
      * iat: when it was issued
      * jti: unique jwt id uuid
      */
+    { 
+      iss,
+      sub: user.id,
+      exp
+    },
     secret
   )
   

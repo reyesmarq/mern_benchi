@@ -8,7 +8,6 @@ const JWTStrategy = new Strategy({
   secretOrKey: secret
 }, async (payload, done) => {
   let user = await User.findById(payload.sub)
-  
   if (!user) {
     return done(null, false)
   }

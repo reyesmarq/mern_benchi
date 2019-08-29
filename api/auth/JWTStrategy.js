@@ -1,6 +1,5 @@
 const
-  { Strategy } = require('passport'),
-  { ExtractJwt } = require('passport-jwt'),
+  { Strategy, ExtractJwt } = require('passport-jwt'),
   { jwt_secret } = require('../config/keys'),
   User = require('../models/user')
 
@@ -8,5 +7,13 @@ const JWTStrategy = new Strategy({
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: jwt_secret
 }, async (payload, done) => {
-  let user = await User.find
+  let user = await User.findById(payload.sub)
+  
+  if (!user) {
+    return done(null, false)
+  }
+
+  return done(null, user)
 })
+
+module.exports = { JWTStrategy }

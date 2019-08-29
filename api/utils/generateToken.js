@@ -8,9 +8,18 @@ const
  * Need to get back to this later
  */
 const generateToken = (user) => {
-  console.log(user)
   let token = jwt.sign(
-    { exp: tokenExpirationDate, issuer: 'Mern Benchi' },
+    { exp: tokenExpirationDate, iss: 'Mern Benchi', sub: user.id },
+    /**
+     * Posible jwt attributes
+     * iss: issuer
+     * sub: reason or identifier of the user
+     * aud: whom going to receive the token exam: web, android, ios
+     * exp: jwt expiration
+     * nbf: incidates the moment when is going to start acepting the jwt
+     * iat: when it was issued
+     * jti: unique jwt id
+     */
     jwt_secret
   )
   

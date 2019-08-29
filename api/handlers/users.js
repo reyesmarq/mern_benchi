@@ -1,7 +1,8 @@
 const
   User = require('../models/user'),
   { CREATED, CONFLICT } = require('../utils/resCodes'),
-  { response } = require('../utils/response')
+  { response } = require('../utils/response'),
+  { generateToken } = require('../utils/generateToken')
 
 /**
  * The sign up would not be possible through user, but through client.
@@ -29,7 +30,8 @@ const postSignUp = async (req, res) => {
 }
 
 const postSignIn = async (req, res) => {
-  res.json({ msg: 'signin completed here is the token...just kidding' })
+  let token = await generateToken(req.user)
+  res.json({ token })
 }
 
 module.exports = {

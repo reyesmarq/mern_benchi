@@ -3,11 +3,10 @@ const
   router = express.Router(),
   { readingData, validatingData } = require('../utils/validator'),
   { postSignUp, postSignIn } = require('../handlers/users'),
+  passport = require('passport'),
   strategies = require('../auth'),
   { authError } = require('../utils/authError'),
   { USER_SIGNUP } = require('../utils/const')
-
-  passport = require('passport')
 
 router.route('/signup')
   .post(readingData(USER_SIGNUP), validatingData, postSignUp)

@@ -6,7 +6,7 @@ const
 class Database {
 
   connect() {
-    mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true })
+    mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
       .then(db => console.log('Database connected.'))
       .catch(err => console.log(`Database error connection: ${err.message}`))
   }

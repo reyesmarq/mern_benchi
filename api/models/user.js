@@ -1,6 +1,8 @@
 const
   bcrypt = require('bcryptjs'),
+  mongoose = require('mongoose'),
   { Schema, model } = require('mongoose'),
+  autoIncrement = require('mongoose-sequence')(mongoose),
   userSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -21,5 +23,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password)
 }
+
+userSchema.plugin(autoIncrement, { inc_field: 'userId' })
 
 module.exports = model('User', userSchema)

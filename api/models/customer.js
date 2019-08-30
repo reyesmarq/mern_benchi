@@ -1,9 +1,12 @@
 const
   bcrypt = require('bcryptjs'),
+  mongoose = require('mongoose'),
   { model, Schema } = require('mongoose'),
+  autoIncrement = require('mongoose-sequence')(mongoose),
   customerSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    externalId: { type: Number, index: true },
     documentInformation: {
       type: { type: String, enum: ['id', 'passport'], required: true },
       number: { type: String, required: true }
@@ -24,5 +27,7 @@ customerSchema.pre('save', async function (next) {
 customerSchema.methods.matchSecurityCode = async function (securityCode) {
   return await bcrypt.compare(securityCode, this.securityCode)
 }
+
+customerSchema.plugin(autoIncrement, { inc_field: 'externalId' })
 
 module.exports = model('Customer', customerSchema)

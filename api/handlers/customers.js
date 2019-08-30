@@ -15,9 +15,10 @@ const postCustomers = async (req, res) => {
   const newCustomer = new Customer(req.body)
   const newBankAccount = new BankAccount({ number: `${Math.round(Math.random() * 100000)}`, customer: newCustomer._id })
 
-  const { created, updated } = await newCustomer.save()
+  const { created, updated, externalId } = await newCustomer.save()
   const { balance, number, } = await newBankAccount.save()
   const data = {
+    id: externalId,
     firstName,
     lastName,
     documentInformation,
